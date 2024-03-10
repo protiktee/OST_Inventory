@@ -1,0 +1,105 @@
+﻿@using OST_Inventory.Models;
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    table {
+        border: 1px solid #808080;
+    }
+
+        table tr {
+            border: 1px solid #808080;
+        }
+
+            table tr th {
+                background: #b6ff00;
+            }
+
+            table tr td, table tr th {
+                border: 1px solid #808080;
+            }
+
+    .clsTrContent:hover {
+        background: #ffd800;
+    }
+</style>
+<script>
+    function ShowEquimentEntryPanel() {
+        $("#dvPartialEntryPanel").dialog({
+            resizable: false,
+            height: 500,
+            width: 1000,
+            modal: true
+        });
+        return false;
+    } 
+</script>
+
+<form action="/Home/Dashboard" method="Post">
+    <input type="submit" name="btnAddNew" id="btnAddNew" onclick="return ShowEquimentEntryPanel()" value="Add New" />
+    @*//@using (Html.BeginForm())*@
+    @{
+
+        List<BaseEquipment> pListData = (List<BaseEquipment>)ViewBag.plstData;
+        <div id="dvTblBorder" style="height:400px;width:500px;overflow:auto;border:1px solid steelblue;">
+            <h4>Equipment List</h4>
+
+            Equipment Name<input type="text" id="txtName" name="txtName" />
+            <input type="submit" value="Search" name="btnSubmit" />
+            <input type="submit" value="Clear" name="btnSubmit" />
+
+            <table style="width:100%">
+                <tr>
+                    <th>Name</th>
+                    <th>Count</th>
+                    <th>Entry Date</th>
+                </tr>
+
+                @foreach (BaseEquipment obj in pListData)
+                {
+                    if (ViewBag.txtName != "")
+                    {
+                        if (obj.Name == ViewBag.txtName)
+                        {
+                            <tr class="clsTrContent">
+                                <td>@obj.Name</td>
+                                <td>@obj.EcCount</td>
+                                <td>@obj.EntryDate.ToString()</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr class="clsTrContent">
+                            <td>@obj.Name</td>
+                            <td>@obj.EcCount</td>
+                            <td>@obj.EntryDate.ToString()</td>
+                        </tr>
+                    }
+
+                }
+            </table>
+        </div>
+        @*<div id="dvTblBorder" style="height:400px;width:500px;overflow:auto;border:1px solid steelblue;">
+                <h4>Entry Panel</h4>
+                @{
+                    FormCollection frm = new FormCollection();
+                    string txtEquipment = "";
+                    if (ViewBag.FormCollection!=null)
+                    {
+                        frm  = (FormCollection)ViewBag.FormCollection;
+                        //txtEquipment = frm["txtEquipment"].ToString();
+                    }
+                }
+                <input type="text" name="txtEquipment" />
+                <input type="submit" name="btnSubmit" value="SaveEquip"/>
+            </div>*@
+    }
+</form> 
+    @Html.Partial("~/Views/Home/_PartialEquipmentEntry.cshtml")
+
+
+
+

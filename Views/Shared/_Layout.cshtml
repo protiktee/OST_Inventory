@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - @System.Configuration.ConfigurationManager.AppSettings["ApplciationName"].ToString()</title>
+    @*@Styles.Render("~/Content/css")*@
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+    @Scripts.Render("~/bundles/modernizr")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"
+            integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0="
+            crossorigin="anonymous"></script>
+
+    <style>
+        html, body {
+            font-size: 20px !important;
+        }
+
+        #dvLeftBar ul {
+            padding: 5px 5px;
+        }
+
+            #dvLeftBar ul li {
+                padding: 5px 5px;
+                border: 1px solid chartreuse;
+                list-style: none;
+            }
+    </style>
+    <script>
+        ////var GloablMsg = "Success: Logged in as @Session["User"]";
+        /*$(document).ready(function () {
+            if (GloablMsg != "") {
+                $('#spnGlobalPartialMsg').html(GloablMsg);
+                $("#dvGlobalPartialMsg").dialog({
+                    resizable: false, 
+                    modal: true
+                });
+            } 
+        })*/
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark" style="background-color:red !important;">
+        <div class="container">
+            @Html.ActionLink("Inventory", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li>
+                        @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+                    <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                </ul>
+            </div>
+            <div style="position:absolute;right:5px;height:100%;width:200px">
+                @{
+                    if (Session["User"] != null)
+                    {
+                        <span>User:@Session["User"]</span>
+                    }
+                }
+                @using (Html.BeginForm("Logout", "Account", FormMethod.Post))
+                {
+                    <input type="submit" name="btnLogout" value="Logout" />
+                }
+
+            </div>
+        </div>
+    </nav>
+    <div id="dvLeftBar" style="border: 1px solid red; width: 200px; position: fixed; background: #00ff21; left: 0px; top: 70px; bottom: 0px;">
+        <div style="padding:5px; ">
+            <ul>
+                <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                <li>@Html.ActionLink("Dashboard", "Dashboard", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+            </ul>
+        </div>
+    </div>
+    <div id="dvContentWrapper" style="border: 1px solid red;  position: fixed;  left: 200px; top: 70px; bottom: 0px;right:0px;overflow:auto">
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
+    </div>
+    
+    @Html.Partial("~/Views/Common/_PartialGlobalMsg.cshtml")
+   
+    @RenderSection("scripts", required: false)
+</body>
+</html>
