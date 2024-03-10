@@ -14,18 +14,20 @@
     <meta name="viewport" content="width=device-width" />
     <title>View</title>
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/Site.css" rel="stylesheet" />
-
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-
+    <link href="~/Content/Site.css" rel="stylesheet" /> 
+    @*<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">*@
+    <link href="~/Content/JqueryUI/jquery-ui.min.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/modernizr")
 
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"
+
+    @*<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"
             integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0="
-            crossorigin="anonymous"></script>
+            crossorigin="anonymous"></script>*@
+    <script src="~/Scripts/JqueryUI/jquery-ui.min.js"></script>
     <script>
+
+
         var GloablMsg = '@ViewBag.LoginMsg';
         $(document).ready(function () {
             if (GloablMsg != "") {
@@ -35,6 +37,11 @@
                     modal: true
                 });
             }
+            if (GloablMsg == "Login Success") {
+                setTimeout(function () {
+                    window.location.href = '@Url.Action("Dashboard","Home")';
+                }, 2000);
+            } 
         })
     </script>
 </head>

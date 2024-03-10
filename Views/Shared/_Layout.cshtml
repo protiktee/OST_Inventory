@@ -7,15 +7,13 @@
     @*@Styles.Render("~/Content/css")*@
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-
+    <link href="~/Content/JqueryUI/jquery-ui.min.css" rel="stylesheet" />
+    
     @Scripts.Render("~/bundles/modernizr")
 
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"
-            integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0="
-            crossorigin="anonymous"></script>
+  @*  @Scripts.Render("~/bundles/bootstrap")*@
+<script src="~/Scripts/JqueryUI/jquery-ui.min.js"></script>
 
     <style>
         html, body {
@@ -33,8 +31,8 @@
             }
     </style>
     <script>
-        ////var GloablMsg = "Success: Logged in as @Session["User"]";
-        /*$(document).ready(function () {
+        var GloablMsg = "@ViewBag.OperationResult";
+        $(document).ready(function () {
             if (GloablMsg != "") {
                 $('#spnGlobalPartialMsg').html(GloablMsg);
                 $("#dvGlobalPartialMsg").dialog({
@@ -42,7 +40,7 @@
                     modal: true
                 });
             } 
-        })*/
+        })
     </script>
 </head>
 <body>

@@ -32,7 +32,21 @@ namespace OST_Inventory.Controllers
         [HttpPost]
         public ActionResult Dashboard(FormCollection frm,string btnSubmit)
         {
-            
+            if (btnSubmit == "Save Equipment")
+            {
+                BaseEquipment baseEquipment = new BaseEquipment();
+                baseEquipment.Name = frm["ddlEquipmentName"].ToString();
+                baseEquipment.EcCount = Convert.ToInt32(frm["txtQuantity"].ToString());//
+                baseEquipment.EntryDate = Convert.ToDateTime(frm["txtEntryDate"].ToString());
+
+                int returnresult =baseEquipment.SaveEquipment();
+
+                if (returnresult > 0)
+                {
+                    ViewBag.OperationResult = "Save Successfully";
+                }
+            }
+
             List<BaseEquipment> plstData = BaseEquipment.ListEquipmentData();
             ViewBag.plstData = plstData;
             ViewBag.txtName = "";
