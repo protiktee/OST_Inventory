@@ -5,13 +5,22 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Linq;
 using System.Web;
+using System.Runtime.Serialization;
 
 namespace OST_Inventory.Models
 {
+    [Serializable]
     public class BaseEquipment
     {
-        public string Name { get; set; }    
+        [DataMember]
+        public int EquipmentID { get; set; }
+        [DataMember]
+        public string Name { get; set; }
+        [DataMember]
         public int EcCount { get; set; }
+        [DataMember]
+        public int Stock { get; set; }
+        [DataMember]
         public DateTime EntryDate { get; set; }
 
         public List<BaseEquipment> ListEquipment { get; set; }
@@ -45,8 +54,10 @@ namespace OST_Inventory.Models
                 while (mrd.Read())
                 {
                     BaseEquipment obj = new BaseEquipment();
+                    obj.EquipmentID = Convert.ToInt32(mrd["EquipmentID"].ToString());
                     obj.Name = mrd["EquipmentName"].ToString();
                     obj.EcCount = Convert.ToInt16(mrd["Quantity"].ToString());
+                    obj.Stock = Convert.ToInt16(mrd["Stock"].ToString());
                     obj.EntryDate = Convert.ToDateTime(mrd["EntryDate"].ToString());
                     plstData.Add(obj);
                 }

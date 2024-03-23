@@ -25,6 +25,7 @@ namespace OST_Inventory.Controllers
                 if (verifyStatus)
                 {
                     Session["User"] = baseAccount.UserName;
+                    Session["Role"] = baseAccount.Role;
                     LoginMsg = "Login Success";
 
                     //return RedirectToAction("Dashboard", "Home");

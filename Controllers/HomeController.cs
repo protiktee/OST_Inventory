@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
 using System.Xml.Linq;
@@ -20,6 +22,8 @@ namespace OST_Inventory.Controllers
             if (Session["User"] != null)
             {
                 List<BaseEquipment> plstData = BaseEquipment.ListEquipmentData();
+                DataTable dtCustEquip = BaseCustomer.ListCustomerEquipment();
+                ViewBag.dtCustEquip = dtCustEquip;
                 ViewBag.plstData = plstData;
                 ViewBag.txtName = "";
                 return View();
@@ -46,9 +50,18 @@ namespace OST_Inventory.Controllers
                     ViewBag.OperationResult = "Save Successfully";
                 }
             }
-
+            if (btnSubmit == "Save Assignment")
+            {
+                int CustomerID = Convert.ToInt32(frm["ddlPartialCustomer"].ToString());
+                int EquipmentID = Convert.ToInt32(frm["ddlPartialEquipment"].ToString());
+                int quantity = Convert.ToInt32(frm["txtPartialEquipQuantity"].ToString());
+                BaseCustomer.SaveAssignment(CustomerID, EquipmentID, quantity);
+                ViewBag.OperationResult = "Save Successfully";
+            }
             List<BaseEquipment> plstData = BaseEquipment.ListEquipmentData();
             ViewBag.plstData = plstData;
+            DataTable dtCustEquip = BaseCustomer.ListCustomerEquipment();
+            ViewBag.dtCustEquip = dtCustEquip;
             ViewBag.txtName = "";
             if (btnSubmit == "Search")
             {
@@ -143,6 +156,27 @@ namespace OST_Inventory.Controllers
             dtable.Rows.Add(51, "sddd", "erf", DateTime.Now);
 
             return dtable;
+        }
+
+        [HttpGet]
+        public ActionResult LstEquipment()
+        {
+            List<BaseEquipment> plstData = BaseEquipment.ListEquipmentData();
+            var plist = (from p in plstData select
+                       new {
+                           EquipmentID = p.EquipmentID,
+                           Name = p.Name,
+                           EcCount=p.EcCount.ToString(),
+                           EntryDate=p.EntryDate.ToString("dd/MM/yyyy")
+                       }).ToList();
+            return Json(plist, JsonRequestBehavior.AllowGet);
+        }
+        [HttpGet]
+        public ActionResult LstCustomer()
+        {
+            List<BaseCustomer> plstData = BaseCustomer.ListCustomer();
+            
+            return Json(plstData, JsonRequestBehavior.AllowGet);
         }
     }
 }

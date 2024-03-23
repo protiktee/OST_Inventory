@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\Users\Nafiur\Desktop\OST_inventory_rel</_PublishTargetUrl>
-    <History>True|2024-03-02T16:38:33.6015415Z;</History>
+    <History>True|2024-03-23T17:31:14.3181863Z;True|2024-03-02T22:38:33.6015415+06:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -25,10 +25,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>04/22/2019 01:06:16</publishTime>
     </File>
     <File Include="bin/OST_Inventory.dll">
-      <publishTime>03/02/2024 22:38:31</publishTime>
+      <publishTime>03/23/2024 23:31:11</publishTime>
     </File>
     <File Include="bin/OST_Inventory.pdb">
-      <publishTime>03/02/2024 22:38:31</publishTime>
+      <publishTime>03/23/2024 23:31:11</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>08/08/2018 05:38:48</publishTime>
@@ -297,6 +297,30 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Content/bootstrap.rtl.min.css.map">
       <publishTime>02/10/2024 20:59:04</publishTime>
     </File>
+    <File Include="Content/JqueryUI/images/ui-icons_444444_256x240.png">
+      <publishTime>03/10/2024 20:54:31</publishTime>
+    </File>
+    <File Include="Content/JqueryUI/images/ui-icons_555555_256x240.png">
+      <publishTime>03/10/2024 20:54:31</publishTime>
+    </File>
+    <File Include="Content/JqueryUI/images/ui-icons_777620_256x240.png">
+      <publishTime>03/10/2024 20:54:31</publishTime>
+    </File>
+    <File Include="Content/JqueryUI/images/ui-icons_777777_256x240.png">
+      <publishTime>03/10/2024 20:54:31</publishTime>
+    </File>
+    <File Include="Content/JqueryUI/images/ui-icons_cc0000_256x240.png">
+      <publishTime>03/10/2024 20:54:31</publishTime>
+    </File>
+    <File Include="Content/JqueryUI/images/ui-icons_ffffff_256x240.png">
+      <publishTime>03/10/2024 20:54:31</publishTime>
+    </File>
+    <File Include="Content/JqueryUI/jquery-ui.min.css">
+      <publishTime>03/10/2024 20:54:08</publishTime>
+    </File>
+    <File Include="Content/JqueryUI/jquery-ui.theme.min.css">
+      <publishTime>03/10/2024 20:54:08</publishTime>
+    </File>
     <File Include="Content/Site.css">
       <publishTime>02/10/2024 22:28:24</publishTime>
     </File>
@@ -372,6 +396,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Scripts/jquery.validate.unobtrusive.min.js">
       <publishTime>02/10/2024 20:59:08</publishTime>
     </File>
+    <File Include="Scripts/JqueryUI/jquery-ui.min.js">
+      <publishTime>03/10/2024 21:01:30</publishTime>
+    </File>
     <File Include="Scripts/modernizr-2.8.3.js">
       <publishTime>02/10/2024 20:59:08</publishTime>
     </File>
@@ -379,7 +406,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/01/2024 21:51:04</publishTime>
     </File>
     <File Include="Views/Account/Login.cshtml">
-      <publishTime>03/02/2024 22:01:16</publishTime>
+      <publishTime>03/10/2024 21:48:56</publishTime>
+    </File>
+    <File Include="Views/Common/_PartialGlobalMsg.cshtml">
+      <publishTime>03/10/2024 21:46:18</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>02/10/2024 20:58:56</publishTime>
@@ -388,16 +418,22 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/23/2024 23:29:26</publishTime>
     </File>
     <File Include="Views/Home/Dashboard.cshtml">
-      <publishTime>03/01/2024 22:20:46</publishTime>
+      <publishTime>03/23/2024 23:31:02</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
       <publishTime>02/10/2024 20:58:56</publishTime>
+    </File>
+    <File Include="Views/Home/_PartialEquipmentAssign.cshtml">
+      <publishTime>03/23/2024 22:49:31</publishTime>
+    </File>
+    <File Include="Views/Home/_PartialEquipmentEntry.cshtml">
+      <publishTime>03/10/2024 23:06:18</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>02/10/2024 20:58:56</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>03/02/2024 22:31:52</publishTime>
+      <publishTime>03/10/2024 22:38:31</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>02/10/2024 20:58:56</publishTime>
@@ -406,7 +442,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/10/2024 20:58:56</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>03/02/2024 22:38:32</publishTime>
+      <publishTime>03/23/2024 23:31:13</publishTime>
     </File>
   </ItemGroup>
 </Project>

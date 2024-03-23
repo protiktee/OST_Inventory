@@ -13,6 +13,7 @@ namespace OST_Inventory.Models
     {
         public string UserName { get; set; }
         public string Password { get; set; }
+        public string Role { get; set; }
 
         public bool VerifyLogin()
         {
@@ -38,15 +39,24 @@ namespace OST_Inventory.Models
 
             if (dataTable.Rows.Count>0)
             {
+                var pdata = (from p in dataTable.AsEnumerable()
+                             where p.Field<string>("Name") == this.UserName && p.Field<string>("Password") == this.Password
+                             select new
+                             {
+                                 UserName = p.Field<string>("Name"),
+                                 Role = p.Field<string>("Role")
+                             }
+                         ).ToList();
+                foreach (var obj in pdata)
+                {
+                    this.UserName = obj.UserName;
+                    this.Role = obj.Role;
+                }
+
+
                 return true;
             }
-            //var pdata = (from p in dataTable.AsEnumerable()
-            //             where p.Field<string>("Name") == this.UserName && p.Field<string>("Password") == this.Password
-            //             select new { 
-            //                UserName= p.Field<string>("Name")
-            //             }
-            //             ).SingleOrDefault();
-
+            
             //if (pdata!=null)
             //{
             //    return true;
